@@ -69,18 +69,21 @@ def get_city_by_id(request: HttpRequest, id: int):
         if len(cities) == 0:
             messages.error(request=request, message='City not found!')
             return redirect(reverse('cities-page'))
-        else:
-            city = cities[0]
-            description, data, expanded_name = get_data_of_city(
-                city=city.city_name, country_or_state=city.country_or_state)
-            data_ctx = {
-                'weather_data': data,
-                'description': description,
-                'expanded_name': expanded_name
-            }
-            return render(
-                request=request,
-                template_name='detail.html',
-                context=data_ctx)
+        if request.method == "DELETE":
+            cities.delete()
+            messages.warning(request, 'Deleted city.')
+            return redirect(reverse('cities-page'))
+        city = cities[0]
+        description, data, expanded_name = get_data_of_city(
+            city=city.city_name, country_or_state=city.country_or_state)
+        data_ctx = {
+            'weather_data': data,
+            'description': description,
+            'expanded_name': expanded_name
+        }
+        return render(
+            request=request,
+            template_name='detail.html',
+            context=data_ctx)
     else:
         return redirect(reverse('login-screen'))
