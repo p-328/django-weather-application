@@ -27,17 +27,17 @@
             {% for city in cities %}
                 <script type="text/javascript">
                     function onDelete() {
-                        const id = "{{city.id}}";
+                        const id = "{{city.id|escapejs}}";
                         fetch(`http://weather-application22.herokuapp.com/${id}/`, 'DELETE')
                             .then(_ => {})                            
                     }
                 </script>
                 <a href="{% url 'city-detail' id=city.id %}">
                     <div class="box">
-                        <h4>{{city}}</h4>
+                        <h4>{{city}}</h4>      
                     </div>
-                    <button class="button is-danger" onclick="onDelete()">Delete</button>          
                 </a>
+                <button class="button is-danger" onclick="onDelete()">Delete</button>  
                 {% empty %}
                 <div class="box">
                     <p>It seems that you have no cities. Try adding one!</p>
