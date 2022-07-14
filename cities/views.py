@@ -39,14 +39,14 @@ def index(request: HttpRequest):
                     messages.error(request, 'City already exists!')
                     return redirect(reverse('cities-page'))
                 location = locator.geocode(
-                    f"{form.cleaned_data['city']},{form.cleaned_data['country_state']}")
+                    f"{form.cleaned_data['city']},{form.cleaned_data['country_or_state']}")
                 if location is None:
                     messages.error(request, 'That location does not exist!')
                     return redirect(reverse('cities-page'))
                 list(messages.get_messages(request))
                 new_city = City(
                     city_name=form.cleaned_data['city'],
-                    country_or_state=form.cleaned_data['country_state'],
+                    country_or_state=form.cleaned_data['country_or_state'],
                     user=request.user)
                 new_city.save()
                 return redirect(reverse('cities-page'))

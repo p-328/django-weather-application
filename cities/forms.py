@@ -8,11 +8,11 @@ class CityForm(forms.Form):
         'name': 'city',
         'label': 'City:'
     }))
-    country_state = forms.CharField(
+    country_or_state = forms.CharField(
         max_length=255,
         widget=forms.TextInput(
             attrs={
                 'required': True,
                 'class': 'input is-primary',
-                'name': 'country_state',
+                'name': 'country_or_state',
                 'label': 'Country/State:'}))
