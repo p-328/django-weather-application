@@ -15,4 +15,4 @@ class CityForm(forms.Form):
                 'required': True,
                 'class': 'input is-primary',
                 'name': 'country_or_state',
-                'label': 'Country/State:'}))
+                'label': 'Country or State:'}))
