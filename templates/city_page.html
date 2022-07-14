@@ -6,9 +6,16 @@
     <body>
         <div class="container">
             {% for message in messages %}
-                <div class="notification is-danger">
-                    {{message}}
-                </div>
+                {% if message.tags == 'error' %}
+                    <div class="notification is-danger">
+                        {{message}}
+                    </div>
+                {% endif %}
+                {% if message.tags == 'warning' %}
+                    <div class="notification is-warning">
+                        {{message}}
+                    </div>
+                {% endif %}    
                 {% empty %}
             {% endfor %}
             <div class="box">
