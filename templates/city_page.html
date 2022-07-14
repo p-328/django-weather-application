@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Cities</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+    <body>
+        <div class="container">
+            {% for message in messages %}
+                <div class="notification is-danger">
+                    {{message}}
+                </div>
+                {% empty %}
+            {% endfor %}
+            <div class="box">
+                <h1 class="title">Hello {{username}}! Your cities: </h1>
+            </div>
+            <form method="POST" class="box">
+                <h1 class="title">Create City</h1>
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" class="button is-primary" value="Add City">
+            </form>
+            {% for city in cities %}
+                <a href="{% url 'city-detail' id=city.id %}">
+                    <div class="box">
+                        <h4>{{city}}</h4>
+                    </div>
+                </a>
+                {% empty %}
+                <div class="box">
+                    <p>It seems that you have no cities. Try adding one!</p>
+                </div>
+            {% endfor %}
+            <div class="box">
+                <a href="{% url 'logout-action' %}" class="button is-link">Logout</a>
+            </div>
+        </div>
+    </body>
+</html>

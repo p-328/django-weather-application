@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Create account</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+    <body>
+        <div class="container">
+            {% for message in messages %}
+                <div class="notification is-danger">
+                    <p>{{ message }}</p>
+                </div>
+                {% empty %}
+            {% endfor %}
+            
+            <form method="POST" class="box">
+                <h1 class="title">Create Account</h1>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="button is-primary" value="Create account!">
+            </form>
+            <div class="box">
+                <a href="{% url 'login-screen' %}" class="button is-link">
+                    <p>Back to Login</p>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

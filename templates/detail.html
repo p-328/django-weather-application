@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <title>{{expanded_name}}</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">
+                <h1 class="title">Weather for {{expanded_name}}</h1>
+            </div>
+            <div class="box">
+                <h1 class="title">Description</h1>
+                <p>{{description}}</p>
+            </div>
+            <div class="box">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>High</th>
+                            <th>Low</th>
+                            <th>Average temp.</th>
+                            <th>Humidity</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Date</th>
+                            <th>High</th>
+                            <th>Low</th>
+                            <th>Average temp.</th>
+                            <th>Humidity</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for day, tempmax, tempmin, temp, humidity in weather_data %}
+                            <tr>
+                                <td>{{day}}</td>
+                                <td>{{tempmax}}</td>
+                                <td>{{tempmin}}</td>
+                                <td>{{temp}}</td>
+                                <td>{{humidity}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="box">
+                <a href="{% url 'cities-page' %}" class="button is-link">Back to main page</a>
+            </div>
+        </div>
+    </body>
+</html>
