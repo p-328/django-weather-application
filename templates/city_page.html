@@ -25,14 +25,16 @@
                 <h1 class="title">Hello {{username}}! Your cities: </h1>
             </div>
             {% for city in cities %}
-                <a href="{% url 'city-detail' id=city.id %}">
-                    <div class="box">
-                        <h4>{{city}}</h4>      
-                    </div>
-                </a>
-                <a href="{% url 'city-delete' id=city.id %}" class="button is-danger">
-                    Delete
-                </a>
+                <div class="box">
+                    <a href="{% url 'city-detail' id=city.id %}">
+                        <div class="box">
+                            <h4>{{city}}</h4>      
+                        </div>
+                    </a>
+                    <a href="{% url 'city-delete' id=city.id %}" class="button is-danger">
+                        Delete
+                    </a>
+                </div>
                 {% empty %}
                 <div class="box">
                     <p>It seems that you have no cities. Try adding one!</p>
