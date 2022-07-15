@@ -25,19 +25,14 @@
                 <h1 class="title">Hello {{username}}! Your cities: </h1>
             </div>
             {% for city in cities %}
-                <script type="text/javascript">
-                    function onDelete() {
-                        const id = "{{city.id|escapejs}}";
-                        fetch(`http://weather-application22.herokuapp.com/${id}/`, 'DELETE')
-                            .then(_ => {})                            
-                    }
-                </script>
                 <a href="{% url 'city-detail' id=city.id %}">
                     <div class="box">
                         <h4>{{city}}</h4>      
                     </div>
                 </a>
-                <button class="button is-danger" onclick="onDelete()">Delete</button>  
+                <form action="{% url 'city-detail' id=city.id %}" method="DELETE">
+                    <input type="submit" class="button is-danger" value="Delete">
+                </form>
                 {% empty %}
                 <div class="box">
                     <p>It seems that you have no cities. Try adding one!</p>
