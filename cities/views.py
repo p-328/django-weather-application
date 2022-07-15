@@ -1,3 +1,4 @@
+from django.db import reset_queries
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from .models import City
@@ -32,6 +33,7 @@ def index(request: HttpRequest):
     if request.user.is_authenticated:
         if request.method == "POST":
             form = CityForm(request.POST)
+            
             if form.is_valid():
                 existing_cities = City.objects.filter(
                     city_name=form.cleaned_data['city'], user=request.user)
@@ -69,10 +71,6 @@ def get_city_by_id(request: HttpRequest, id: int):
         if len(cities) == 0:
             messages.error(request=request, message='City not found!')
             return redirect(reverse('cities-page'))
-        if request.method == "DELETE":
-            cities.delete()
-            messages.warning(request, 'Deleted city.')
-            return redirect(reverse('cities-page'))
         city = cities[0]
         description, data, expanded_name = get_data_of_city(
             city=city.city_name, country_or_state=city.country_or_state)
@@ -87,3 +85,18 @@ def get_city_by_id(request: HttpRequest, id: int):
             context=data_ctx)
     else:
         return redirect(reverse('login-screen'))
+
+
+def delete(request: HttpRequest, id: int):
+    if not request.user.is_authenticated:
+        return redirect(reverse('login-screen'))
+    if request.method == 'GET':
+        city = City.objects.filter(id=id, user=request.user)
+        if len(city) == 0:
+            messages.error(request, 'City does not exist!')
+            return redirect(reverse('cities-page'))
+        city.delete()
+        messages.warning(request, 'City deleted.')
+        return redirect(reverse("cities-page"))
+    messages.error(request, 'Invalid request!')
+    return redirect(reverse("cities-page"))

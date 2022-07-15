@@ -30,9 +30,9 @@
                         <h4>{{city}}</h4>      
                     </div>
                 </a>
-                <form action="{% url 'city-detail' id=city.id %}" method="DELETE">
-                    <input type="submit" class="button is-danger" value="Delete">
-                </form>
+                <a href="{% url 'city-delete' id=city.id %}" class="button is-danger">
+                    Delete
+                </a>
                 {% empty %}
                 <div class="box">
                     <p>It seems that you have no cities. Try adding one!</p>
