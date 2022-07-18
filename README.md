@@ -1,2 +1,2 @@
 # Weather App
-A hobby weather app to show off my web dev skills.
+Django application that tracks the weather. This was made to show what I have learned about web development.
