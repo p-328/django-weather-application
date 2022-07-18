@@ -29,16 +29,22 @@
                             <th>High</th>
                             <th>Low</th>
                             <th>Average temp.</th>
+                            <th>High feels like</th>
+                            <th>Low feels like</th>
+                            <th>Average feels like</th>
                             <th>Humidity</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        {% for day, tempmax, tempmin, temp, humidity in weather_data %}
+                        {% for day, tempmax, tempmin, temp, fl_max, fl_min, fl, humidity in weather_data %}
                             <tr>
                                 <td>{{day}}</td>
                                 <td>{{tempmax}}</td>
                                 <td>{{tempmin}}</td>
                                 <td>{{temp}}</td>
+                                <td>{{fl_max}}</td>
+                                <td>{{fl_min}}</td>
+                                <td>{{fl}}</td>
                                 <td>{{humidity}}</td>
                             </tr>
                         {% endfor %}

@@ -20,6 +20,9 @@ def get_data_of_city(city: str, country_or_state: str):
          day['tempmax'],
          day['tempmin'],
          day['temp'],
+         day['feelslikemax'],
+         day['feelslikemin'],
+         day['feelslike'],
          day['humidity']) for day in weather_data_dict]
     return (
         weather_data_raw.json()['description'],
