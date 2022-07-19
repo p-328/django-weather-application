@@ -36,7 +36,7 @@ def index(request: HttpRequest):
     if request.user.is_authenticated:
         if request.method == "POST":
             form = CityForm(request.POST)
-            
+
             if form.is_valid():
                 existing_cities = City.objects.filter(
                     city_name=form.cleaned_data['city'], user=request.user)
