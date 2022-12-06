@@ -1,12 +1,12 @@
 from django.db import reset_queries
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
-from .models import City
+from cities.models import City
 from django.urls import reverse
 from django.contrib import messages
 import requests
 from geopy.geocoders import Nominatim
-from .forms import CityForm
+from cities.forms import CityForm
 
 locator = Nominatim(user_agent='locator')
 
