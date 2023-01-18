@@ -17,8 +17,8 @@
                 <h1 class="title">Weather Tracker</h1>
             </div>
             <form method="POST" class="box">
+		{% csrf_token %}
                 <h1 class="title">Create Account</h1>
-                {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" class="button is-primary" value="Create account!">
             </form>
