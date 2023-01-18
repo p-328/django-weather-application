@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3%tv6u)h!su$2(p%$d*v9x+cg(94&m6hn2m*lgevd--0&*d_%a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['weather-application22.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'application.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd2ra57kgnn8buc',
-        'USER': 'kizhkuxgroyygb',
-        'PASSWORD': 'a1fc47feba454ac77c64bc7911c9941a5d21439dc413cc83b5593b94fd1da39e',
-        'HOST': 'ec2-52-205-61-230.compute-1.amazonaws.com',
-        'PORT': '5432'
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'jcMY0sF6Mq8rpyHTtcya',
+        'HOST': 'containers-us-west-153.railway.app',
+        'PORT': '7763'
     }
 }
 
