@@ -13,7 +13,7 @@ locator = Nominatim(user_agent='locator')
 
 def get_data_of_city(city: str, country_or_state: str):
     weather_data_raw = requests.get(
-        f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city},{country_or_state}?key=CC7Q5GYJQEFFCEPWHEDWRUS47")
+        f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city},{country_or_state}?key=REDACTED")
     weather_data_dict = weather_data_raw.json()['days']
     weather_data_filter = [
         (day['datetime'],
